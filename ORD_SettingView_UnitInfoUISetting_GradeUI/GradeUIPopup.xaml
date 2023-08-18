@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="ORD_SettingView_UnitInfoUISetting_GradeUI.GradeUIPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:ORD_SettingView_UnitInfoUISetting_GradeUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1500">
+    <Grid Background="#7f000000">
+        <ScrollViewer Height="1080" Width="1500">
+            <Grid Background="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1500">
+                <ListBox x:Name="listbox" AllowDrop="True" ItemsSource="{Binding UnitInfo_GradeList}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Drop">
+                            <i:InvokeCommandAction Command="{Binding GradeUI_DropCommand}" 
+                             CommandParameter="{Binding SelectedItem, ElementName=listBox}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Height="25" Content="{Binding GradeName}"/>
+                                <ListBox Width="200" ItemsSource="{Binding UnitList}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Width="200" Height="27">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="27"/>
+                                                    <ColumnDefinition Width="102"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Margin="1" Source="{Binding Image}"/>
+                                                <TextBlock Grid.Column="1" Margin="1" Text="{Binding Name}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Margin" Value="5,5,5,5"/>
+                            <Setter Property="Padding" Value="0,0,0,0"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate  TargetType="{x:Type ListBoxItem}">
+                                        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" >
+                                            <Border x:Name="border" BorderBrush="{x:Null}" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="2.5"/>
+                                            <StackPanel HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                                                <ContentPresenter/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <ContentPresenter />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

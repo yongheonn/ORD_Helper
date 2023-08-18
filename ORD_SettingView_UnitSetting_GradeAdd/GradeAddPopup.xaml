@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="ORD_SettingView_UnitSetting_GradeAdd.GradeAddPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ORD_SettingView_UnitSetting_GradeAdd"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="600">
+    <Grid Background="#7f000000">
+        <Grid Background="White" Width="600" Height="540" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Button Width="50" Margin="25" Height="50" BorderThickness="0"
+                    Grid.Column="2" Grid.Row="0"
+                    Command="{Binding Setting_PopupCommand}" CommandParameter="0">
+                    <Image Source="{Binding GradeAdd_CloseImage}"/>
+                <Button.Background>
+                    <SolidColorBrush Opacity="0"/>
+                </Button.Background>
+            </Button>
+            <TextBlock Grid.Row="0" Width="400" Height="30" VerticalAlignment="Bottom" Margin="10" FontSize="20">
+                추가할 등급의 이름을 아래에 입력하세요
+            </TextBlock>
+            <TextBox Grid.Row="1" Width="400" Height="75" VerticalAlignment="Top" FontSize="30" Text="{Binding GradeAdd_SetGradeName}"/>
+            
+            <Button Grid.Row="1" Grid.Column="1" Content="확인" Height="50" Width="50"
+                    Command="{Binding GradeAdd_ConfirmCommand}"/>
+        </Grid>
+    </Grid>
+</UserControl>

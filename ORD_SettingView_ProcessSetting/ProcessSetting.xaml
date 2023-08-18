@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ORD_SettingView_ProcessSetting.ProcessSetting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ORD_SettingView_ProcessSetting"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="800">
+    <ScrollViewer Height="720">
+        <StackPanel>
+            <ComboBox x:Name="cb" Width="400" Height="50" Margin="50 50 0 0" HorizontalAlignment="Left"
+                      ItemsSource="{Binding ProcessSetting_VersionList}"
+                      SelectedItem="{Binding ProcessSetting_SelectedVersionItem}" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock  FontSize="20" Text="{Binding Text}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <StackPanel Width="400" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 50 150 50">
+                <TextBlock Width="400" Height="30" Margin="10" FontSize="20" Text="War3 실행 파일 이름"/>
+                <TextBox Width="400" Height="55" FontSize="30" Text="{Binding ProcessSetting_AddressName}"
+                                  BorderBrush="{Binding ProcessSetting_AddressNameColor}"/>
+            </StackPanel>
+            <Button  Margin="50" Width="70" Height="70" Content="저장" FontSize="20"
+                     HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                     Command="{Binding ProcessSetting_SaveCommand}"
+                     IsEnabled="{Binding ProcessSetting_CanSave}"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

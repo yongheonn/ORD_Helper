@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="ORD_SettingView_UnitSetting_UnitAdd.UnitAddPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ORD_SettingView_UnitSetting_UnitAdd"
+             mc:Ignorable="d" 
+             d:DesignWidth="720">
+    
+    <Grid Background="#7f000000">
+        <ScrollViewer Height="480" Width="720">
+            <Grid Background="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="720">
+
+                <Button Width="50" Margin="25" Height="50" BorderThickness="0" VerticalAlignment="Top" HorizontalAlignment="Right"
+                    Command="{Binding UnitAdd_ExitCommand}">
+                    <Image Source="{Binding UnitAdd_CloseImage}"/>
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
+
+                <StackPanel>
+                    <StackPanel Width="400" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50 50 150 50">
+                        <TextBlock Width="400" Height="30" Margin="10" FontSize="20" Text="추가할 유닛의 이름을 아래에 입력하세요"/>
+                        <TextBox Width="400" Height="55" FontSize="30" Text="{Binding UnitAdd_UnitName}"
+                                  BorderBrush="{Binding UnitAdd_UnitNameColor}"/>
+                    </StackPanel>
+                    <StackPanel Width="600" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50 0 0 50">
+                        <TextBlock HorizontalAlignment="Left" Width="300" Height="30" Margin="10" FontSize="20" Text="추가할 유닛의 이미지를 고르시오"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Width="100" Height="100" HorizontalAlignment="Left" Source="{Binding UnitAdd_UnitImage}"/>
+                            <Button Width="100" Height="50" Grid.Column="1" Content="이미지 불러오기" Command="{Binding UnitAdd_LoadImageCommand}"/>
+                        </Grid>
+                    </StackPanel>
+                    <Grid>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 0 0">
+                            <Border BorderThickness="5" BorderBrush="Black" Width="350" Height="60" VerticalAlignment="Bottom" Margin="0 0 0 10">
+                                <TextBlock Text="조합 목록" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                </TextBlock>
+                            </Border>
+                            <ListBox Height="300" Width="350"
+                                 ItemsSource="{Binding UnitAdd_MixList}" SelectionMode="Single"
+                                 SelectedItem="{Binding UnitAdd_SelectedMixItem}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50"/>
+                                                <ColumnDefinition Width="200"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Width="40" Height="40" Margin="5" Source="{Binding Image}"/>
+                                            <Grid  Grid.Column="1">
+                                                <TextBlock FontSize="20" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                                   Text="{Binding Name}"/>
+                                                <TextBlock FontSize="20" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right"
+                                                   Text="{Binding Num}"/>
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                <StackPanel Margin="0 100 75 0" HorizontalAlignment="Right">
+                    <Button Width="200" Height="50" Content="추가" Margin="0 0 0 20"
+                            Command="{Binding UnitAdd_MixAddCommand}"/>
+                    <Button Width="200" Height="50" Content="삭제" Margin="0 0 0 20"
+                            Command="{Binding UnitAdd_MixDeleteCommand}"
+                            IsEnabled="{Binding UnitAdd_CanMixDelete}"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition Width="220"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Width="400" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50 50 0 50">
+                            <TextBlock Text="추가할 유닛의 고유 인덱스를 입력(16진수)"
+                                       Width="400" Height="30" Margin="10" FontSize="20"/>
+                            <TextBox Width="400" Height="55" FontSize="30" Text="{Binding UnitAdd_UnitIndex}"
+                                     BorderBrush="{Binding UnitAdd_UnitIndexColor}"/>
+                        </StackPanel>
+                        <Button Width="100" Height="50" HorizontalAlignment="Left" Grid.Column="1" Margin="0 45 0 0"
+                                Content="검색" Command="{Binding UnitAdd_IndexSearchCommand}"/>
+                    </Grid>
+                    
+                    <Button VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                    Content="확인" Height="50" Width="50" Margin="50"
+                            IsEnabled="{Binding UnitAdd_ConfirmEnable}"
+                            Command="{Binding UnitAdd_ConfirmCommand}">
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+            </Grid>
+    
+</UserControl>

@@ -1,0 +1,170 @@
+﻿<UserControl x:Class="ORD_SettingView.SettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sl="clr-namespace:ORD_SettingView_SettingList;assembly=ORD_SettingView_SettingList"
+             xmlns:uas="clr-namespace:ORD_SettingView_UnitAddressSetting;assembly=ORD_SettingView_UnitAddressSetting"
+             xmlns:ras="clr-namespace:ORD_SettingView_ResourcesAddressSetting;assembly=ORD_SettingView_ResourcesAddressSetting"
+             xmlns:gas="clr-namespace:ORD_SettingView_GameStateAddressSetting;assembly=ORD_SettingView_GameStateAddressSetting"
+             xmlns:us="clr-namespace:ORD_SettingView_UnitSetting;assembly=ORD_SettingView_UnitSetting"
+             xmlns:ps="clr-namespace:ORD_SettingView_ProcessSetting;assembly=ORD_SettingView_ProcessSetting"
+             xmlns:vs="clr-namespace:ORD_SettingView_VersionSetting;assembly=ORD_SettingView_VersionSetting"
+             xmlns:uius="clr-namespace:ORD_SettingView_UnitInfoUISetting;assembly=ORD_SettingView_UnitInfoUISetting"
+             xmlns:sis="clr-namespace:ORD_SettingView_SearchIndexSetting;assembly=ORD_SettingView_SearchIndexSetting"
+             xmlns:sws="clr-namespace:ORD_SettingView_WispSetting;assembly=ORD_SettingView_WispSetting"
+             xmlns:ssi="clr-namespace:ORD_SettingView_SearchIndexSetting_IndexAddPopup;assembly=ORD_SettingView_SearchIndexSetting_IndexAddPopup"
+             xmlns:gu="clr-namespace:ORD_SettingView_UnitInfoUISetting_GradeUI;assembly=ORD_SettingView_UnitInfoUISetting_GradeUI"
+             xmlns:sug="clr-namespace:ORD_SettingView_UnitSetting_GradeAdd;assembly=ORD_SettingView_UnitSetting_GradeAdd"
+             xmlns:suu="clr-namespace:ORD_SettingView_UnitSetting_UnitAdd;assembly=ORD_SettingView_UnitSetting_UnitAdd"
+             xmlns:suum="clr-namespace:ORD_SettingView_UnitSetting_UnitAdd_MixAdd;assembly=ORD_SettingView_UnitSetting_UnitAdd_MixAdd"
+             xmlns:suuu="clr-namespace:ORD_SettingView_UnitSetting_UnitAdd_UnitIndex;assembly=ORD_SettingView_UnitSetting_UnitAdd_UnitIndex"
+             xmlns:local="clr-namespace:ORD_SettingView"
+             mc:Ignorable="d" 
+              d:DesignWidth="1200" d:DesignHeight="720">
+   
+    <UserControl.Resources>
+        <DataTemplate x:Key="SettingListTemplate">
+            <sl:SettingList />
+        </DataTemplate>
+        <DataTemplate x:Key="UnitInfoUISettingTemplate">
+            <uius:UnitInfoUISetting />
+        </DataTemplate>
+        <DataTemplate x:Key="UnitAddressSettingTemplate">
+            <uas:UnitAddressSetting />
+        </DataTemplate>
+        <DataTemplate x:Key="ResourcesAddressSettingTemplate">
+            <ras:ResourcesAddressSetting />
+        </DataTemplate>
+        <DataTemplate x:Key="GameStateAddressSettingTemplate">
+            <gas:GameStateAddressSetting />
+        </DataTemplate>
+        <DataTemplate x:Key="UnitSettingTemplate" >
+            <us:UnitSetting />
+        </DataTemplate>
+        <DataTemplate x:Key="ProcessSettingTemplate">
+            <ps:ProcessSetting />
+        </DataTemplate>
+        <DataTemplate x:Key="VersionSettingTemplate">
+            <vs:VersionSetting />
+        </DataTemplate>
+        <DataTemplate x:Key="SearchIndexSettingTemplate">
+            <sis:SearchIndex />
+        </DataTemplate>
+        <DataTemplate x:Key="WispSettingTemplate">
+            <sws:WispSetting />
+        </DataTemplate>
+        <DataTemplate x:Key="GradeAddPopupTemplate">
+            <sug:GradeAddPopup />
+        </DataTemplate>
+        <DataTemplate x:Key="UnitAddPopupTemplate">
+            <suu:UnitAddPopup />
+        </DataTemplate>
+        <DataTemplate x:Key="MixAddPopupTemplate">
+            <suum:MixAddPopup />
+        </DataTemplate>
+        <DataTemplate x:Key="UnitIndexPopupTemplate">
+            <suuu:UnitIndexPopup />
+        </DataTemplate>
+        <DataTemplate x:Key="GradeUIPopupTemplate">
+            <gu:GradeUIPopup />
+        </DataTemplate>
+        <DataTemplate x:Key="IndexAddPopupTemplate">
+            <ssi:IndexAddPopup />
+        </DataTemplate>
+        <DataTemplate x:Key="NullTemplate">
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid Background="#7f000000">
+        <Grid Width="1200" Background="White">
+            <Button HorizontalAlignment="Right" Margin="0,50,50,0" VerticalAlignment="Top" Width="50" Height="50" 
+                    BorderThickness="0"
+                    Command="{Binding SettingView_BackCommand}">
+                <Button.Background>
+                    <SolidColorBrush Opacity="0"/>
+                </Button.Background>
+                <Image Source="{Binding SettingView_BackImage}"/>
+            </Button>
+            <Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="1000"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentControl Content="{Binding }" HorizontalAlignment="Left" Grid.Column="0">
+                        <ContentControl.Style>
+                            <Style TargetType="{x:Type ContentControl}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource SettingListTemplate}" />
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+                    <ContentControl Content="{Binding }" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2">
+                        <ContentControl.Style>
+                            <Style TargetType="{x:Type ContentControl}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Setting_SwitchView}" Value="0">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource UnitAddressSettingTemplate}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Setting_SwitchView}" Value="1">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource ResourcesAddressSettingTemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Setting_SwitchView}" Value="2">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource GameStateAddressSettingTemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Setting_SwitchView}" Value="3">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource UnitSettingTemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Setting_SwitchView}" Value="4">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource ProcessSettingTemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Setting_SwitchView}" Value="5">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource VersionSettingTemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Setting_SwitchView}" Value="6">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource UnitInfoUISettingTemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Setting_SwitchView}" Value="7">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource SearchIndexSettingTemplate}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Setting_SwitchView}" Value="8">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource WispSettingTemplate}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+                </Grid>
+                <ContentControl Content="{Binding }">
+                    <ContentControl.Style>
+                        <Style TargetType="{x:Type ContentControl}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Setting_Popup}" Value="0">
+                                    <Setter Property="ContentTemplate" Value="{StaticResource NullTemplate}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Setting_Popup}" Value="1">
+                                    <Setter Property="ContentTemplate" Value="{StaticResource GradeAddPopupTemplate}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Setting_Popup}" Value="2">
+                                    <Setter Property="ContentTemplate" Value="{StaticResource UnitAddPopupTemplate}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Setting_Popup}" Value="3">
+                                    <Setter Property="ContentTemplate" Value="{StaticResource MixAddPopupTemplate}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Setting_Popup}" Value="4">
+                                    <Setter Property="ContentTemplate" Value="{StaticResource UnitIndexPopupTemplate}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Setting_Popup}" Value="5">
+                                    <Setter Property="ContentTemplate" Value="{StaticResource GradeUIPopupTemplate}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Setting_Popup}" Value="6">
+                                    <Setter Property="ContentTemplate" Value="{StaticResource IndexAddPopupTemplate}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ContentControl.Style>
+                </ContentControl>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

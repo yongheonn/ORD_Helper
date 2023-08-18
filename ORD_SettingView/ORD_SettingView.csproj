@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C45F36C-8837-49EB-B9B5-501EC4BC602C}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>ORD_SettingView</RootNamespace>
+    <AssemblyName>ORD_SettingView</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="SettingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="SettingView.xaml.cs">
+      <DependentUpon>SettingView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ORD_SettingView_GameStateAddressSetting\ORD_SettingView_GameStateAddressSetting.csproj">
+      <Project>{5c5a14ab-f98f-49e5-b1d2-269617340b3f}</Project>
+      <Name>ORD_SettingView_GameStateAddressSetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_List\ORD_SettingView_SettingList.csproj">
+      <Project>{1808f45b-d296-4c0c-a5b7-1c11a8c86e4a}</Project>
+      <Name>ORD_SettingView_SettingList</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_ProcessSetting\ORD_SettingView_ProcessSetting.csproj">
+      <Project>{b2da1782-f811-43ef-b453-aeb930fa771a}</Project>
+      <Name>ORD_SettingView_ProcessSetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_ResourcesAddress\ORD_SettingView_ResourcesAddressSetting.csproj">
+      <Project>{f7f762ee-93ad-4d09-8707-2b8cd62323e2}</Project>
+      <Name>ORD_SettingView_ResourcesAddressSetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_SearchIndexSetting\ORD_SettingView_SearchIndexSetting.csproj">
+      <Project>{96f78732-f418-4102-bf24-3c14d3ac1573}</Project>
+      <Name>ORD_SettingView_SearchIndexSetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_SearchIndexSetting_IndexAddPopup\ORD_SettingView_SearchIndexSetting_IndexAddPopup.csproj">
+      <Project>{38a407e6-40ab-4340-a9c2-db87c2f32028}</Project>
+      <Name>ORD_SettingView_SearchIndexSetting_IndexAddPopup</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_SettingListView\ORD_SettingView_UnitSetting.csproj">
+      <Project>{c6c7b866-2f0d-432f-9fa5-11b7e7a67bd2}</Project>
+      <Name>ORD_SettingView_UnitSetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_UISetting\ORD_SettingView_UnitInfoUISetting.csproj">
+      <Project>{374e3818-78e3-49be-a42a-358933d8390d}</Project>
+      <Name>ORD_SettingView_UnitInfoUISetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_UnitDebug\ORD_SettingView_UnitAddressSetting.csproj">
+      <Project>{b000d889-7f9c-4055-9951-41754b90a355}</Project>
+      <Name>ORD_SettingView_UnitAddressSetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_UnitInfoUISetting_GradeUI\ORD_SettingView_UnitInfoUISetting_GradeUI.csproj">
+      <Project>{370c0f2f-1f4e-4421-944b-c389931b931e}</Project>
+      <Name>ORD_SettingView_UnitInfoUISetting_GradeUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_UnitSetting_GradeAdd\ORD_SettingView_UnitSetting_GradeAdd.csproj">
+      <Project>{e0fd8671-0a9d-466a-a0de-5dd89e85fd70}</Project>
+      <Name>ORD_SettingView_UnitSetting_GradeAdd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_UnitSetting_UnitAdd\ORD_SettingView_UnitSetting_UnitAdd.csproj">
+      <Project>{70423002-a298-447c-a676-c25c4f6b2412}</Project>
+      <Name>ORD_SettingView_UnitSetting_UnitAdd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_UnitSetting_UnitAdd_MixAdd\ORD_SettingView_UnitSetting_UnitAdd_MixAdd.csproj">
+      <Project>{f5f3a894-e007-49f6-b01a-d474bdba9749}</Project>
+      <Name>ORD_SettingView_UnitSetting_UnitAdd_MixAdd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_UnitSetting_UnitAdd_UnitIndex\ORD_SettingView_UnitSetting_UnitAdd_UnitIndex.csproj">
+      <Project>{f3e9891f-785c-4bbf-898f-6bcdc7f6ac5c}</Project>
+      <Name>ORD_SettingView_UnitSetting_UnitAdd_UnitIndex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_VersionSetting\ORD_SettingView_VersionSetting.csproj">
+      <Project>{83aae800-c14a-40a7-aa90-1f510efd2ffd}</Project>
+      <Name>ORD_SettingView_VersionSetting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORD_SettingView_WispSetting\ORD_SettingView_WispSetting.csproj">
+      <Project>{9f4315c1-333c-4605-8ea7-e5dc90e36694}</Project>
+      <Name>ORD_SettingView_WispSetting</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

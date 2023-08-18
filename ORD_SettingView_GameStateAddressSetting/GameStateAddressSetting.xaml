@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="ORD_SettingView_GameStateAddressSetting.GameStateAddressSetting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ORD_SettingView_GameStateAddressSetting"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="800">
+    <ScrollViewer Height="720">
+        <StackPanel>
+            <ComboBox x:Name="cb" Width="400" Height="50" Margin="50 50 0 0" HorizontalAlignment="Left"
+                      ItemsSource="{Binding GameStateAddressSetting_VersionList}"
+                      SelectedItem="{Binding GameStateAddressSetting_SelectedVersionItem}" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock  FontSize="20" Text="{Binding Text}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <StackPanel Width="400" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 50 150 50">
+                <TextBlock Width="400" Height="30" Margin="10" FontSize="20" Text="게임 상태 주소 참조 dll"/>
+                <TextBox Width="400" Height="55" FontSize="30" Text="{Binding GameStateAddressSetting_AddressName}"
+                                  BorderBrush="{Binding GameStateAddressSetting_AddressNameColor}"/>
+            </StackPanel>
+
+
+            <TextBlock Text="오프셋" FontSize="30" HorizontalAlignment="Left" Margin="50 0 0 0" />
+            <Grid HorizontalAlignment="Left" Margin="50 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="450"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <ListBox Width="450" Height="250" HorizontalAlignment="Left" SelectionMode="Single" ItemsSource="{Binding GameStateAddressSetting_OffsetList}"
+                     SelectedItem="{Binding GameStateAddressSetting_SelectedOffsetItem}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="70">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="200"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Index}" FontSize="20" VerticalAlignment="Center"
+                                           Margin="5" Grid.Column="0"/>
+                                <TextBox Text="{Binding Offset}" FontSize="30" VerticalAlignment="Center" Height="50"
+                                         Margin="5" BorderBrush="{Binding OffsetColor}" Grid.Column="1"/>
+                                <TextBlock Text="{Binding Address}" VerticalAlignment="Center"
+                                           FontSize="20" Margin="5" Grid.Column="2"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50 0 0 0">
+                    <Button  Margin="0 0 0 20" Width="100" Height="50" Content="추가" Command="{Binding GameStateAddressSetting_OffsetAddCommand}"/>
+                    <Button  Width="100" Height="50" Content="삭제" Command="{Binding GameStateAddressSetting_OffsetDeleteCommand}"/>
+                </StackPanel>
+            </Grid>
+            <Button  Margin="50" Width="70" Height="70" Content="저장" FontSize="20"
+                     HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                     Command="{Binding GameStateAddressSetting_SaveCommand}"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

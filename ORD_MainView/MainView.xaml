@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="ORD_MainView.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="clr-namespace:ORD_MainView_UnitInfo;assembly=ORD_MainView_UnitInfo"
+             xmlns:mi="clr-namespace:ORD_MainView_MixInfo;assembly=ORD_MainView_MixInfo"
+             mc:Ignorable="d" 
+             >
+    <UserControl.Resources>
+        <DataTemplate x:Key="UnitInfoTemplate">
+            <ui:UnitInfo />
+        </DataTemplate>
+        <DataTemplate x:Key="MixInfoTemplate">
+            <mi:MixInfoPopup />
+        </DataTemplate>
+        <DataTemplate x:Key="NullTemplate">
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1600"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <ComboBox Width="200" Height="50" Margin="0 50 0 50" HorizontalAlignment="Left"
+                      ItemsSource="{Binding MainView_VersionList}"
+                      SelectedItem="{Binding MainView_SelectedVersionItem}" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock  FontSize="20" Text="{Binding Text}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        <Button Width="50" Height="50" 
+                BorderThickness="0"
+                Command="{Binding MainView_SettingCommand}">
+            <Button.Background>
+                <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+            <Image Source="{Binding MainView_SettingImage}"/>
+        </Button>
+        </StackPanel>
+        <ui:UnitInfo Grid.Column="1"/>
+    </Grid>
+        <ContentControl Content="{Binding }">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding MainView_Popup}" Value="0">
+                            <Setter Property="ContentTemplate" Value="{StaticResource NullTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding MainView_Popup}" Value="1">
+                            <Setter Property="ContentTemplate" Value="{StaticResource MixInfoTemplate}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
+</UserControl>
